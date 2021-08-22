@@ -10,6 +10,9 @@ _A script that searches my exported chrome bookmarks and returns one or more lin
     - Visual Studio Code v1.59.1
 - Python3
     - v3.8.10
+- External Dependencies
+    - sty
+    - lxml
 ---
 ### _Working out code in a virtual environment_
 - *Install virtualenv*
