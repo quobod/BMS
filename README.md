@@ -8,6 +8,8 @@ _A script that searches my exported chrome bookmarks and returns one or more lin
     - Ubuntu 20.04.2 LTS
 - IDE
     - Visual Studio Code v1.59.1
+- Python3
+    - v3.8.10
 ---
 ### _Working out code in a virtual environment_
 - *Install virtualenv*
