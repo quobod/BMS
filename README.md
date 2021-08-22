@@ -22,6 +22,8 @@ _A script that searches my exported chrome bookmarks and returns one or more lin
 - *Change into the project directory*
 - *Activate the environment*
     - source bin/activate
+- *Install environment dependencies*
+    - pip3 install sty lxml
 - *To deactivate the environment*
     - deactivate
 ### _Script Usage_
