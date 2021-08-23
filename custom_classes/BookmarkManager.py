@@ -2,8 +2,6 @@ from custom_modules.PlatformConstants import SEP, USER
 import os
 import re
 
-# Constants
-
 
 class BmLister:
     __BOOKMARKS_HOME = '{}home{}{}{}Documents{}information{}chromebookmarks{}'.format(
@@ -37,7 +35,6 @@ class BmLister:
             f = re.search(r"[0-9]{1}_[0-9]{1}_[0-9]{2}", k)
             s = re.search(r"[0-9]{1}_[0-9]{2}_[0-9]{2}", k)
             t = re.search(r"[0-9]{2}_[0-9]{1}_[0-9]{2}", k)
-            
 
             if f != None:
                 print('{}:\t\t{}'.format(k, v))
