@@ -3,14 +3,15 @@ import os
 import re
 
 # Constants
-BOOKMARKS_HOME = '{}home{}{}{}Documents{}information{}chromebookmarks{}'.format(
-    SEP, SEP, USER, SEP, SEP, SEP, SEP)
 
 
 class BmLister:
+    __BOOKMARKS_HOME = '{}home{}{}{}Documents{}information{}chromebookmarks{}'.format(
+        SEP, SEP, USER, SEP, SEP, SEP, SEP)
+
     def __init__(this):
         this.__store = {}
-        this.__bookmarks = os.listdir(BOOKMARKS_HOME)
+        this.__bookmarks = os.listdir(this.__BOOKMARKS_HOME)
         this.__bookmark_count = len(this.__bookmarks)
         this.store_bookmarks()
 
@@ -21,7 +22,7 @@ class BmLister:
 
     def get_bookmark(this, key):
         if key in this.__store:
-            return {'status': True, 'bookmark': '{}{}'.format(BOOKMARKS_HOME, this.__store[key])}
+            return {'status': True, 'bookmark': '{}{}'.format(this.__BOOKMARKS_HOME, this.__store[key])}
         else:
             return {'status': False, 'cause': 'bookmark date: {} not found'.format(key.upper())}
 
