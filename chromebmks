@@ -25,7 +25,8 @@ def usage():
 def init():
     cls()
     print('\n')
-    bookmarks = bml.bookmarks_map
+    bookmarks = list(bml.bookmarks_map.keys())
+    bookmarks.sort()
     function = cms['custom']
     start_msg = function('\tBookmarks By Dates\n'.upper(), 244, 230, 109)
     print(start_msg)
