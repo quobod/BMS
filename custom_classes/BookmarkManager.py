@@ -1,6 +1,8 @@
 from custom_modules.PlatformConstants import SEP, USER
+from custom_modules.ConsoleMessenger import CONSOLE_MESSENGER_SWITCH as cms
 import os
 import re
+from .HtmlScraper import Hscraper as Hs
 
 
 class BmLister:
@@ -12,6 +14,7 @@ class BmLister:
         this.__bookmarks = os.listdir(this.__BOOKMARKS_HOME)
         this.__bookmark_count = len(this.__bookmarks)
         this.store_bookmarks()
+        this.hs = Hs()
 
     def store_bookmarks(this):
         for b in this.__bookmarks:
@@ -23,6 +26,32 @@ class BmLister:
             return {'status': True, 'bookmark': '{}{}'.format(this.__BOOKMARKS_HOME, this.__store[key])}
         else:
             return {'status': False, 'cause': 'bookmark date: {} not found'.format(key.upper())}
+
+    def print_bookmark(this, key):
+        bookmark_path = this.get_bookmark(key)
+
+        if bookmark_path['status']:
+            result = this.hs.set_file_path(bookmark_path['bookmark'])
+            if result['status']:
+                result = this.hs.scrape()
+                if result['status']:
+                    function = cms['custom']
+                    msg = function('\n\tBookmark {}\n'.format(
+                        bookmark_path['bookmark']))
+                    print(msg)
+                    print(*result['links'], sep="\n")
+                else:
+                    function = cms['error']
+                    msg = function(result['cause'])
+                    print(msg)
+            else:
+                function = cms['error']
+                msg = function(result['cause'])
+                print(msg)
+        else:
+            function = cms['error']
+            msg = function(bookmark_path['cause'])
+            print(msg)
 
     @property
     def print_bookmarks_list(this):

@@ -9,8 +9,10 @@ from custom_modules.ConsoleMessenger import CONSOLE_MESSENGER_SWITCH as cms
 bml = BmLister()
 hs = Hs()
 
+
 def cls():
     os.system('clear')
+
 
 def usage():
     bm = sys.argv[0].rsplit('/')
@@ -95,6 +97,9 @@ args_count = len(arguments)
 init()
 
 if args_count == 2:
-    start_process(arguments[0], arguments[1])
+    if arguments[1] == 'p' or arguments[1] == 'print':
+        bml.print_bookmark(arguments[0])
+    else:
+        start_process(arguments[0], arguments[1])
 else:
     usage()
