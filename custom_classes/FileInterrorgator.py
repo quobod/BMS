@@ -30,6 +30,7 @@ class FileInterrogator:
         return this.file_path._flavour.pathmod.abspath(this.file_path)
 
     def __str__(this):
-        return 'File Interroragtor'
+        return "{}'s File Interroragtor".format(this.name)
+
 
 fileinterrogator = FileInterrogator
